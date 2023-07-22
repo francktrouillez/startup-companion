@@ -1,0 +1,45 @@
+{
+  "name": "Add Bash Shell Aliases",
+  "description": [
+    "Add bash shell aliases:",
+    "- ls\t\t: ls --color=auto",
+    "- ll\t\t: ls -la",
+    "- l.\t\t: ls -d .* --color-auto",
+    "- c\t\t: clear",
+    "- cd..\t\t: cd ..",
+    "- ..\t\t: cd ..",
+    "- ...\t\t: cd ../../",
+    "- ....\t\t: cd ../../../",
+    "- .....\t\t: cd ../../../../",
+    "- .4\t\t: cd ../../../../",
+    "- .5\t\t: cd ../../../../../",
+    "- grep\t\t: grep --color=auto",
+    "- egrep\t\t: grep --color=auto",
+    "- fgrep\t\t: grep --color=auto",
+    "- sha1\t\t: openssl sha1",
+    "- diff\t\t: colordiff",
+    "- h\t\t: history",
+    "- now\t\t: date +\"%Y-%m-%d %T\"",
+    "- ping\t\t: ping -c 5",
+    "- fastping\t: ping -c 25 -i .2",
+    "- ports\t\t: netstat -tulanp",
+    "- header\t: curl -I",
+    "- apt\t\t: sudo apt",
+    "- apt-get\t: sudo apt-get",
+    "- update\t: sudo apt-get update && sudo apt-get upgrade",
+    "- root\t\t: sudo -i",
+    "- su\t\t: sudo -i",
+    "- meminfo\t: free -m -l -t",
+    "- cpuinfo\t: lscpu",
+    "- wget\t\t: wget -c",
+    "- k\t\t: kill -9"
+  ],
+  "files_modified": [
+    ".bash_aliases",
+    ".bashrc"
+  ],
+  "dependencies": [
+    "colordiff",
+    "net-tools"
+  ]
+}
