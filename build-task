@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative "objects/terminal"
+require_relative "companion"
+require "json"
+
+terminal = Objects::Terminal
+
+terminal.log("Creation of a new task")
+task = terminal.prompt.ask("What is the task?") do |q|
+  q.required true
+  q.validate(/\A\w+\Z/)
+  q.messages[:valid?] = "Invalid task name"
+end
+
+os = terminal.prompt.select("For which OS do you want to create the task?", Companion::AVAILABLE_OS)
+
+name = terminal.prompt.ask("What is the name of the task?", default: task)
+description = terminal.prompt.multiline("What is the description of the task?").map(&:chomp)
+files_modified = terminal.prompt.multiline("What are the files that will be modified by the task?").map(&:chomp)
+dependencies = terminal.prompt.multiline("What are the dependencies of the task?").map(&:chomp)
+
+Dir.mkdir("#{File.dirname(__FILE__)}/#{os}/#{task}")
+terminal.log("Creation of the task #{task} for #{os} ...")
+terminal.log("Creation of the config file ...")
+File.write(
+  "#{File.dirname(__FILE__)}/#{os}/#{task}/config.json",
+  JSON.pretty_generate({ name:, description:, files_modified:, dependencies: })
+)
+terminal.success("Config file created.")
+terminal.log("Creation of the task file ...")
+File.write(
+  "#{File.dirname(__FILE__)}/#{os}/#{task}/task.rb",
+  [
+    "# frozen_string_literal: true",
+    "",
+    "require_relative \"../../objects/task\"",
+    "module #{os.capitalize}",
+    "module #{task.split("_").map(&:capitalize).join}",
+    "class Task < Objects::Task",
+    "# Run the task.",
+    "#",
+    "# @return [void]",
+    "def run",
+    "# TODO",
+    "end",
+    "end",
+    "end",
+    "end"
+  ].join("\n")
+)
+system("bundle exec rubocop -A #{File.dirname(__FILE__)}/#{os}/#{task}/task.rb > /dev/null")
+terminal.success("Task file created.")
