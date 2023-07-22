@@ -36,5 +36,5 @@ It will help you create a new task, and then it will create a new folder in `tas
 - Add startup script: add a startup script to your OS, so that you can run some commands on startup
 
 ## TODO
-Add task to install Docker
-Add tasks to startup script (like other docker images)
+- [ ] Add task to install Docker
+- [ ] Add tasks to startup script (like other docker images)
