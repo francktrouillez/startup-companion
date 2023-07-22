@@ -1,0 +1,19 @@
+{
+  "name": "Add MySQL Docker image",
+  "description": [
+    "Add the MySQL Docker image and run it on startup",
+    "It creates a user and a database for the user",
+    "- Username\t: root",
+    "- Password\t: root",
+    "- Host\t\t: 127.0.0.1",
+    "- Port:\t\t: 3306",
+    "- Database\t: localhost"
+  ],
+  "files_modified": [
+    "~/.startup"
+  ],
+  "dependencies": [
+    "task:startup_script",
+    "docker"
+  ]
+}
