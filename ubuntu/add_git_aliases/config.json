@@ -1,0 +1,21 @@
+{
+  "name": "Add Git Aliases",
+  "description": [
+    "Add git aliases to your global .gitconfig.",
+    "It adds:",
+    "- co\t\t: checkout",
+    "- ci\t\t: commit",
+    "- st\t\t: status",
+    "- last\t\t: log -1 HEAD",
+    "- br\t\t: branch",
+    "- hist\t\t: log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(red)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --graph --date=short",
+    "- unstage\t: reset HEAD",
+    "- uncommit\t: reset --soft HEAD^",
+    "- alias\t\t: config --get-regexp ^alias",
+    "- pl\t\t: pull",
+    "- cb\t\t: rev-parse --abbrev-ref HEAD",
+    "- spush\t\t: !git push -u origin HEAD"
+  ],
+  "files_modified": ["~/.gitconfig"],
+  "dependencies": ["git"]
+}
