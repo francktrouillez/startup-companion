@@ -1,0 +1,12 @@
+{
+  "name": "Add startup script",
+  "description": [
+    "Add a script that will run when the computer boots"
+  ],
+  "files_modified": [
+    ".startup"
+  ],
+  "dependencies": [
+
+  ]
+}
